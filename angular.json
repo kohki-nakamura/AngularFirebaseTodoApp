@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "acb0897f-71c8-4969-bf86-7205c2a1e94c"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -123,6 +126,10 @@
               "devServerTarget": "AngularFirebaseTodoApp:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

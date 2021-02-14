@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angularfirebasetodoapp": {
+      "hosting": {
+        "AngularFirebaseTodoApp": [
+          "angularfirebasetodoapp"
+        ]
+      }
+    }
+  }
+}
