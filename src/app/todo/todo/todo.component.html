@@ -25,8 +25,26 @@
   </form>
 <!-- </ng-container> -->
 
-<ng-container *ngFor="let todo of todos$ | async">
-  <div>
-    {{ todo.name }}
-  </div>
-</ng-container>
+<div class="todolist" cdkDropListGroup>
+  <ng-container *ngFor="let list of lists">
+    <div class="todolist__container mat-elevation-z2">
+      <div class="todolist__label">{{ list }}</div>
+      <div
+        id="{{ list }}"
+        class="todolist__box"
+        cdkDropList
+        [cdkDropListData]="filterTodo(list, (todos$ | async)!)"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <app-todo-item
+          class="todolist__item mat-elevation-z1"
+          *ngFor="let todo of filterTodo(list, (todos$ | async)!)"
+          cdkDrag
+          [cdkDragData]="todo"
+          [todo]="todo"
+          (deleteTodo)="deleteTodo($event)"
+        ></app-todo-item>
+      </div>
+    </div>
+  </ng-container>
+</div>
