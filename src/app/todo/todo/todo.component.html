@@ -1,5 +1,6 @@
-<ng-container *ngIf="user$ | async as user">
-  <form class="todoForm" [formGroup]="form" (ngSubmit)="createTodo(user!.uid)">
+<!-- <ng-container *ngIf="user$ | async as user"> -->
+  <!-- <form class="todoForm" [formGroup]="form" (ngSubmit)="createTodo(user!.uid)"> -->
+  <form action="" class="todoForm" [formGroup]="form" (ngSubmit)="createTodo('123456789')">
     <mat-form-field hintLabel="最大文字数">
       <mat-label>TODO追加</mat-label>
       <input
@@ -22,7 +23,7 @@
       <mat-icon>send</mat-icon>
     </button>
   </form>
-</ng-container>
+<!-- </ng-container> -->
 
 <ng-container *ngFor="let todo of todos$ | async">
   <div>
