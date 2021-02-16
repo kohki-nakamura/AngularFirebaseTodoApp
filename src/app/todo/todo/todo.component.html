@@ -1,6 +1,5 @@
-<!-- <ng-container *ngIf="user$ | async as user"> -->
-  <!-- <form class="todoForm" [formGroup]="form" (ngSubmit)="createTodo(user!.uid)"> -->
-  <form action="" class="todoForm" [formGroup]="form" (ngSubmit)="createTodo('123456789')">
+<ng-container *ngIf="user$ | async as user">
+  <form class="todoForm" [formGroup]="form" (ngSubmit)="createTodo(user!.uid)">
     <mat-form-field hintLabel="最大文字数">
       <mat-label>TODO追加</mat-label>
       <input
@@ -23,7 +22,7 @@
       <mat-icon>send</mat-icon>
     </button>
   </form>
-<!-- </ng-container> -->
+</ng-container>
 
 <div class="todolist" cdkDropListGroup>
   <ng-container *ngFor="let list of lists">
