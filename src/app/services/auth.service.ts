@@ -7,22 +7,22 @@ import firebase from 'firebase/app';
 })
 export class AuthService {
   user$ = this.afAuth.user;
+
   constructor(private afAuth: AngularFireAuth) {}
+
   login() {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
-    .then(() => {
-      var provider = new firebase.auth.GoogleAuthProvider();
-      // In memory persistence will be applied to the signed in Google user
-      // even though the persistence was set to 'none' and a page redirect
-      // occurred.
-      return firebase.auth().signInWithRedirect(provider);
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    });
+    firebase.auth()
+   .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+   .then((result) => {
+      console.log("success setPersistence");
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithRedirect(provider);
+   })
+   .catch((error) => {
+      console.log("failed setPersistence");
+   });
   }
+
   logout() {
     firebase.auth().signOut()
   }
