@@ -11,7 +11,8 @@ export class AuthService {
   login() {
     firebase.auth()
    .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-   .then(() => {
+   .then((result) => {
+      console.log(result);
       const provider = new firebase.auth.GoogleAuthProvider();
       return firebase.auth().signInWithRedirect(provider);
    })
