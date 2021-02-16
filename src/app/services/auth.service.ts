@@ -9,14 +9,15 @@ export class AuthService {
   user$ = this.afAuth.user;
   constructor(private afAuth: AngularFireAuth) {}
   login() {
-    this.afAuth
-    .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    firebase.auth()
+   .setPersistence(firebase.auth.Auth.Persistence.SESSION) // setPersistenceがないと上記のようにポップアップ内が真っ白になる
+   .then(() => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      return firebase.auth().signInWithRedirect(provider);
+   })
+   .catch((error) => {
+      console.log("err");
+   });
   }
   logout() {
     this.afAuth.signOut();
