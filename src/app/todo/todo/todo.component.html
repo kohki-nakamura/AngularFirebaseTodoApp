@@ -1,1 +1,31 @@
-<p>todo works!</p>
+<ng-container *ngIf="user$ | async as user">
+  <form class="todoForm" [formGroup]="form" (ngSubmit)="createTodo(user!.uid)">
+    <mat-form-field hintLabel="最大文字数">
+      <mat-label>TODO追加</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        autocomplete="off"
+        #input
+      />
+      <!-- バリデーションエラー -->
+      <mat-error *ngIf="form.controls.name.hasError('maxlength')">
+        文字数オーバー
+      </mat-error>
+      <mat-error *ngIf="form.controls.name.hasError('required')">
+        入力してください
+      </mat-error>
+      <mat-hint align="end"> {{ input.value?.length || 0 }}/10 </mat-hint>
+    </mat-form-field>
+    <button mat-icon-button [disabled]="!form.valid">
+      <mat-icon>send</mat-icon>
+    </button>
+  </form>
+</ng-container>
+
+<ng-container *ngFor="let todo of todos$ | async">
+  <div>
+    {{ todo.name }}
+  </div>
+</ng-container>
