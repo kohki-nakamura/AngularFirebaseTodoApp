@@ -3,7 +3,6 @@ export const environment = {
   firebase: {
     apiKey: 'AIzaSyCGPJXlJ5KCTPIgs6NYQIbqceb04yBu8-U',
     authDomain: 'angularfirebasetodoapp.firebaseapp.com',
-    databaseURL: 'https://angularfirebasetodoapp.firebaseio.com',
     projectId: 'angularfirebasetodoapp',
     storageBucket: 'angularfirebasetodoapp.appspot.com',
     messagingSenderId: '403521488647',
